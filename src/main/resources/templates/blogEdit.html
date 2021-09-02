@@ -19,7 +19,6 @@
                         <input type="text" th:value="${el.title}" name="title" placeholder="Enter the title of the article" class="form-control"><br>
                         <input type="text" th:value="${el.announcement}" name="announcement" placeholder="Enter the announcement of the article" class="form-control"><br>
                         <textarea name="fullText" placeholder="Enter the full text of the article" class="form-control" th:text="${el.fullText}"/><br>
-                        <label>Add image:  <span><input type="file" name="fileImg" id="fileImage" accept="image/png, image/jpeg"></span></label><br><br>
                         <button type="submit" class="btn btn-success">Update</button>
                     </form>
                 </div>
