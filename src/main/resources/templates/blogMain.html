@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <title>Blog about cars</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark">
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header th:insert="blocks/header :: header"></header>
+        <main>
+            <div class="container mt-5">
+                <h1>Blog about cars</h1>
+                <div th:each="el : ${posts}" class="alert alert-info mt-2">
+                    <h3 th:text="${el.title}"/>
+                    <p th:text="${el.announcement}"/>
+                    <a th:href="'/blog/' + ${el.id}" class="btn btn-warning">Details</a>
+                </div>
+            </div>
+        </main>
+        <!-- FOOTER -->
+        <footer th:insert="blocks/footer :: footer"></footer>
+    </div>
+</body>
+</html>

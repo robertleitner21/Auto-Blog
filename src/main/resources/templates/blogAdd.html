@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <title>Blog about cars</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header th:insert="blocks/header :: header"></header>
+        <main>
+            <div class="container mt-5 mb-5">
+                <h1>Add new article</h1>
+                <form action="/blog/add" enctype="multipart/form-data" method="post">
+                    <input type="text" name="title" placeholder="Enter the title of the article" class="form-control"><br>
+                    <input type="text" name="announcement" placeholder="Enter the announcement of the article" class="form-control"><br>
+                    <textarea name="fullText" placeholder="Enter the full text of the article" class="form-control" style="height: 300px"></textarea><br>
+                    <label>Add image:  <span><input type="file" name="fileImg" id="fileImage" accept="image/png, image/jpeg"></span></label><br><br>
+                    <img id="thumbnail" alt="Image preview" style="max-width: 250px"><br><br>
+                    <button type="submit" class="btn btn-success">Add the article</button>
+                </form>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer th:insert="blocks/footer :: footer"></footer>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#fileImage").change(function () {
+                showImageThumbnail(this);
+            })
+        });
+
+        function showImageThumbnail(fileInput) {
+            file = fileInput.files[0];
+            reader = new FileReader();
+
+            reader.onload = function(e) {
+                $("#thumbnail").attr('src', e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+
+</body>
+</html>
